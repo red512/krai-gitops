@@ -1,5 +1,5 @@
 image:
-  repository: "us-central1-docker.pkg.dev/PROJECT_ID/krai/krai-frontend"
+  repository: "us-central1-docker.pkg.dev/krai-project-490112/krai/krai-frontend"
   tag: "latest"
   pullPolicy: Always
 

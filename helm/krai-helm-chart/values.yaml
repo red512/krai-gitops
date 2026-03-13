@@ -1,5 +1,5 @@
 image:
-  repository: "us-central1-docker.pkg.dev/PROJECT_ID/krai/krai"
+  repository: "us-central1-docker.pkg.dev/krai-project-490112/krai/krai"
   tag: "latest"
   pullPolicy: Always
 
@@ -21,10 +21,10 @@ autoscaling:
 
 serviceAccount:
   name: krai
-  gcpServiceAccount: "krai-app@PROJECT_ID.iam.gserviceaccount.com"
+  gcpServiceAccount: "krai-app@krai-project-490112.iam.gserviceaccount.com"
 
 env:
-  GCS_BUCKET: "krai-bucket"
+  GCS_BUCKET: "krai-project-490112-krai-bucket"
   PUBSUB_TOPIC: "krai-jobs"
   PUBSUB_SUBSCRIPTION: "krai-jobs-sub"
   API_KEY: "demo-key-change-me"
