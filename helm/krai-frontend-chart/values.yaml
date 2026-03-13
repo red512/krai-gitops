@@ -1,0 +1,29 @@
+image:
+  repository: "us-central1-docker.pkg.dev/PROJECT_ID/krai/krai-frontend"
+  tag: "latest"
+  pullPolicy: Always
+
+replicaCount: 1
+
+resources:
+  limits:
+    memory: 128Mi
+    cpu: 200m
+  requests:
+    memory: 64Mi
+    cpu: 100m
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 8080
+
+env:
+  REACT_APP_API_URL: "http://krai.krai-backend.svc.cluster.local"
+  REACT_APP_API_KEY: "demo-key-change-me"

@@ -1,0 +1,52 @@
+image:
+  repository: "us-central1-docker.pkg.dev/PROJECT_ID/krai/krai"
+  tag: "latest"
+  pullPolicy: Always
+
+replicaCount: 1
+
+resources:
+  limits:
+    memory: 512Mi
+    cpu: 500m
+  requests:
+    memory: 256Mi
+    cpu: 250m
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80
+
+serviceAccount:
+  name: krai
+  gcpServiceAccount: "krai-app@PROJECT_ID.iam.gserviceaccount.com"
+
+env:
+  GCS_BUCKET: "krai-bucket"
+  PUBSUB_TOPIC: "krai-jobs"
+  PUBSUB_SUBSCRIPTION: "krai-jobs-sub"
+  API_KEY: "demo-key-change-me"
+
+worker:
+  replicaCount: 1
+  resources:
+    limits:
+      memory: 1Gi
+      cpu: 1000m
+    requests:
+      memory: 512Mi
+      cpu: 500m
+  autoscaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 3
+    pollingInterval: 15
+    cooldownPeriod: 60
+    messagesPerWorker: "5"
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 8080

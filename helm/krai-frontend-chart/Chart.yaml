@@ -1,0 +1,5 @@
+apiVersion: v2
+name: krai-frontend
+description: krai frontend React application
+version: 0.1.0
+appVersion: "1.0.0"

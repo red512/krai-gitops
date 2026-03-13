@@ -1,0 +1,22 @@
+{{- if .Values.worker.autoscaling.enabled }}
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: krai-worker
+  labels:
+    app: krai
+    component: worker
+spec:
+  scaleTargetRef:
+    name: krai-worker
+  minReplicaCount: {{ .Values.worker.autoscaling.minReplicas }}
+  maxReplicaCount: {{ .Values.worker.autoscaling.maxReplicas }}
+  pollingInterval: {{ .Values.worker.autoscaling.pollingInterval | default 15 }}
+  cooldownPeriod: {{ .Values.worker.autoscaling.cooldownPeriod | default 60 }}
+  triggers:
+    - type: gcp-pubsub
+      metadata:
+        subscriptionName: {{ .Values.env.PUBSUB_SUBSCRIPTION | quote }}
+        mode: "SubscriptionSize"
+        value: {{ .Values.worker.autoscaling.messagesPerWorker | default "5" | quote }}
+{{- end }}

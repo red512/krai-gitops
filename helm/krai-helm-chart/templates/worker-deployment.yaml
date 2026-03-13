@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: krai-worker
+  labels:
+    app: krai
+    component: worker
+spec:
+  replicas: {{ .Values.worker.replicaCount }}
+  selector:
+    matchLabels:
+      app: krai
+      component: worker
+  template:
+    metadata:
+      labels:
+        app: krai
+        component: worker
+    spec:
+      serviceAccountName: {{ .Values.serviceAccount.name }}
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 1000
+      containers:
+        - name: krai-worker
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command: ["python", "worker.py"]
+          env:
+            - name: GCS_BUCKET
+              value: {{ .Values.env.GCS_BUCKET | quote }}
+            - name: PUBSUB_TOPIC
+              value: {{ .Values.env.PUBSUB_TOPIC | quote }}
+            - name: PUBSUB_SUBSCRIPTION
+              value: {{ .Values.env.PUBSUB_SUBSCRIPTION | quote }}
+            - name: API_KEY
+              value: {{ .Values.env.API_KEY | quote }}
+            - name: GOOGLE_CLOUD_PROJECT
+              value: "PROJECT_ID"
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          resources:
+            limits:
+              memory: {{ .Values.worker.resources.limits.memory }}
+              cpu: {{ .Values.worker.resources.limits.cpu }}
+            requests:
+              memory: {{ .Values.worker.resources.requests.memory }}
+              cpu: {{ .Values.worker.resources.requests.cpu }}
