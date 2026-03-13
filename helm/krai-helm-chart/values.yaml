@@ -1,5 +1,5 @@
 image:
-  repository: "us-central1-docker.pkg.dev/krai-project-490112/krai/krai"
+  repository: "us-central1-docker.pkg.dev/krai-project-490112/krai/krai-backend"
   tag: "84d1007"
   pullPolicy: Always
 
