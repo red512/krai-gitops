@@ -24,6 +24,7 @@ serviceAccount:
   gcpServiceAccount: "krai-app@krai-project-490112.iam.gserviceaccount.com"
 
 env:
+  GOOGLE_CLOUD_PROJECT: "krai-project-490112"
   GCS_BUCKET: "krai-project-490112-krai-bucket"
   PUBSUB_TOPIC: "krai-jobs"
   PUBSUB_SUBSCRIPTION: "krai-jobs-sub"
