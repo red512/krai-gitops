@@ -25,5 +25,6 @@ service:
   targetPort: 8080
 
 env:
-  REACT_APP_API_URL: "http://krai.krai-backend.svc.cluster.local"
+  REACT_APP_API_URL: "http://136.111.136.139"
   REACT_APP_API_KEY: "demo-key-change-me"
+  REACT_APP_GOOGLE_CLIENT_ID: ""

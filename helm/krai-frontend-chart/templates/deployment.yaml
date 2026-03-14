@@ -42,6 +42,11 @@ spec:
               port: 8080
             initialDelaySeconds: 5
             periodSeconds: 5
+          env:
+            {{- range $key, $value := .Values.env }}
+            - name: {{ $key }}
+              value: {{ $value | quote }}
+            {{- end }}
           resources:
             limits:
               memory: {{ .Values.resources.limits.memory }}

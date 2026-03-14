@@ -35,7 +35,10 @@ spec:
             - name: PUBSUB_SUBSCRIPTION
               value: {{ .Values.env.PUBSUB_SUBSCRIPTION | quote }}
             - name: API_KEY
-              value: {{ .Values.env.API_KEY | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: krai-secrets
+                  key: API_KEY
             - name: GOOGLE_CLOUD_PROJECT
               value: {{ .Values.env.GOOGLE_CLOUD_PROJECT | quote }}
           securityContext:
