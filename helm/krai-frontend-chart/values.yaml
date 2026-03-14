@@ -3,7 +3,7 @@ image:
   tag: "158fa5a"
   pullPolicy: Always
 
-replicaCount: 0
+replicaCount: 1
 
 resources:
   limits:
