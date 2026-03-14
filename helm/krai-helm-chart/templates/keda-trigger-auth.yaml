@@ -1,0 +1,12 @@
+{{- if .Values.worker.autoscaling.enabled }}
+apiVersion: keda.sh/v1alpha1
+kind: TriggerAuthentication
+metadata:
+  name: keda-gcp-auth
+  labels:
+    app: krai
+    component: worker
+spec:
+  podIdentity:
+    provider: gcp
+{{- end }}

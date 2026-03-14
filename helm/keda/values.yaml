@@ -1,6 +1,4 @@
 keda:
-  crds:
-    install: false
   resources:
     operator:
       limits:
