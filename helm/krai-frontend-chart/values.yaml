@@ -1,6 +1,6 @@
 image:
   repository: "us-central1-docker.pkg.dev/krai-project-490112/krai/krai-frontend"
-  tag: "358b47f"
+  tag: "10793b3"
   pullPolicy: Always
 
 replicaCount: 1
