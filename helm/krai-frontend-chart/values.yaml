@@ -26,5 +26,5 @@ service:
 
 env:
   REACT_APP_API_URL: "http://136.111.136.139"
-  REACT_APP_API_KEY: "demo-key-change-me"
-  REACT_APP_GOOGLE_CLIENT_ID: ""
+  REACT_APP_API_KEY: ""
+  REACT_APP_GOOGLE_CLIENT_ID: "801062806309-2mkr2ikjl53ore594ql98dlai7beok5u.apps.googleusercontent.com"

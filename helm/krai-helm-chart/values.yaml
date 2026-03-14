@@ -28,7 +28,7 @@ env:
   GCS_BUCKET: "krai-project-490112-krai-bucket"
   PUBSUB_TOPIC: "krai-jobs"
   PUBSUB_SUBSCRIPTION: "krai-jobs-sub"
-  GOOGLE_CLIENT_ID: ""
+  GOOGLE_CLIENT_ID: "801062806309-2mkr2ikjl53ore594ql98dlai7beok5u.apps.googleusercontent.com"
 
 worker:
   replicaCount: 1
