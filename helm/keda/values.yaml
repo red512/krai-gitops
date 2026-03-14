@@ -1,4 +1,8 @@
 keda:
+  serviceAccount:
+    operator:
+      annotations:
+        iam.gke.io/gcp-service-account: keda-operator@krai-project-490112.iam.gserviceaccount.com
   resources:
     operator:
       limits:
